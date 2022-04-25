@@ -1,0 +1,14 @@
+// 这种注释编译后不会出现在css文件上
+/* 这种注释会出现在css文件上*/
+
+@color : red;
+@bgColor: pink;
+@width : 200px;
+@height : 200px;
+
+.box {
+  color: @color;
+  background-color: @bgColor;
+  width: @width;
+  height: @height;
+}

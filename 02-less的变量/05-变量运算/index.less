@@ -1,0 +1,28 @@
+// 直接通过@引用@myId
+@myId: #warp;
+// 通过 . # 来引用
+@myClass: box;
+
+// 变量运算
+@width: 100px;
+@color: #222;
+
+// 第一种方式
+@{myId} {
+	color: @color * 2;
+	width: @width - 20;
+	height: @width - 30;
+	margin: (@width - 20) * 5;
+}
+
+// 第二种方式
+.@{myClass} {
+	color: gold;
+	width: 100px;
+	height: 100px;
+}
+
+// 第三种
+#@{myClass} {
+	font-size: 20px;
+}

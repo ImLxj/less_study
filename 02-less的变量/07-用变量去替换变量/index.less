@@ -1,0 +1,30 @@
+// 直接通过@引用@myId
+@myId: #warp;
+// 通过 . # 来引用
+@myClass: box;
+
+// 第一种方式
+@{myId} {
+	color: red;
+	width: 100px;
+	height: 100px;
+}
+
+// 第二种方式
+.@{myClass} {
+	color: gold;
+	width: 100px;
+	height: 100px;
+}
+
+// 第三种
+#@{myClass} {
+	font-size: 20px;
+}
+
+@font: @var;
+@var: "hello world";
+#@{myClass}::after {
+	content: @var;
+	font-size: 20px;
+}

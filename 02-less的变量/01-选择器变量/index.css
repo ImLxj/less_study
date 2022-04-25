@@ -1,0 +1,13 @@
+#warp {
+  color: red;
+  width: 100px;
+  height: 100px;
+}
+.box {
+  color: gold;
+  width: 100px;
+  height: 100px;
+}
+#box {
+  font-size: 20px;
+}

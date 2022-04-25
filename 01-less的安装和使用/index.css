@@ -1,0 +1,7 @@
+/* 这种注释会出现在css文件上*/
+.box {
+  color: red;
+  background-color: pink;
+  width: 200px;
+  height: 200px;
+}

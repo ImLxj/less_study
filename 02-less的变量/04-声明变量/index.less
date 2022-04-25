@@ -1,0 +1,52 @@
+// 选择器变量
+// 直接通过@引用@myId
+@myId: #warp;
+// 通过 . # 来引用
+@myClass: box;
+
+// 属性变量
+@backGroundColor: background-color;
+@color: pink;
+
+// 第一种方式
+@{myId} {
+	color: red;
+	width: 100px;
+	height: 100px;
+}
+
+// 第二种方式
+.@{myClass} {
+	color: gold;
+	width: 100px;
+	height: 100px;
+}
+
+// 第三种
+#@{myClass} {
+	font-size: 20px;
+	@{backGroundColor}: @color;
+}
+
+// url变量
+@images: "../img";
+
+body {
+	background: url("@{images}/dog.png");
+}
+
+// 声明变量
+@background: {
+	background-color: red;
+};
+
+@Rulers: {
+	width: 200px;
+	height: 200px;
+	border: 1px solid red;
+};
+
+.@{myClass} {
+	@background();
+	@Rulers();
+}

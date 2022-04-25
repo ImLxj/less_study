@@ -1,0 +1,23 @@
+#warp {
+  color: red;
+  width: 100px;
+  height: 100px;
+}
+.box {
+  color: gold;
+  width: 100px;
+  height: 100px;
+}
+#box {
+  font-size: 20px;
+  background-color: pink;
+}
+body {
+  background: url("../img/dog.png");
+}
+.box {
+  background-color: red;
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+}
