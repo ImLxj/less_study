@@ -1,0 +1,29 @@
+@box: .box;
+
+@{box} {
+	width: 100px;
+	height: 100px;
+	&::after {
+		content: "hello world";
+	}
+	span {
+		display: block;
+		width: 20px;
+		height: 20px;
+		background-color: gray;
+	}
+	&_center {
+		color: red;
+	}
+}
+
+.warp {
+	width: 500px;
+	height: 20px;
+	background-color: lightgreen;
+	@media screen {
+		@media (max-width: 768px) {
+			width: 100px;
+		}
+	}
+}

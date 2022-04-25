@@ -236,3 +236,152 @@ body {
 ```
 
 ### 三、 less的嵌套
+
+##### 1、&符的妙用
+
+&：代表上一层选择器的名字，此例以box来说明。
+
+```less
+// Less
+@box: .box;
+
+@{box} {
+	width: 100px;
+	height: 100px;
+	&::after {
+		content: "hello world";
+	}
+	span {
+		display: block;
+		width: 20px;
+		height: 20px;
+		background-color: gray;
+	}
+	&_center { //处理方式直接 & 变成 .box
+		color: red;
+	}
+}
+
+// 生成的css
+.box {
+  width: 100px;
+  height: 100px;
+}
+.box::after {
+  content: "hello world";
+}
+.box span { // 嵌套了
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: gray;
+}
+.box_center { // 没有嵌套
+  color: red;
+}
+```
+
+##### 2、媒体查询
+
+在以往的工作中，我们使用媒体查询，都要把一个元素分开写：
+
+```css
+.warp {
+	width: 500px;
+	height: 20px;
+	background-color: lightgreen;
+}
+@media screen and (max-width: 768px) {
+	.warp {
+		width: 100px;
+	}
+}
+```
+
+Less提供了一个十分便捷的方式：
+
+```less
+// Less
+.warp {
+	width: 500px;
+	height: 20px;
+	background-color: lightgreen;
+	@media screen {
+		@media (max-width: 768px) {
+			width: 100px;
+		}
+	}
+}
+
+// 生成的css
+.warp {
+  width: 500px;
+  height: 20px;
+  background-color: lightgreen;
+}
+@media screen and (max-width: 768px) {
+  .warp {
+    width: 100px;
+  }
+}
+
+```
+
+唯一的缺点就是每一个元素都会编译出自己的@media声明，并不会合并。
+
+### 四、混合方法
+
+##### 1、 无参数方法
+
+方法犹如声明集合，使用时直接键入名称即可
+
+```less
+// 无参数方法
+.card() { // 等价于.card
+	background-color: lightsalmon;
+	width: 500px;
+	height: 500px;
+}
+#warp {
+	.card(); // 等价于 .card
+}
+// 生成的css
+#warp {
+  background-color: lightsalmon;
+  width: 500px;
+  height: 500px;
+}
+```
+
+其中`.card`与`.card()`是等价的。建议写成`.card()`。
+
+要点：
+
+- `.`  与 `#` 作为方法的前缀。
+- 方法后写不写 `()` 看个人习惯。
+
+##### 2、默认参数方法
+
+- Less可以使用默认参数，如果没有参数，那么将使用默认参数。
+- `@arguments` 犹如 `JS`中的`arguments`指代的数全部参数。
+- 传入的参数中必须带着单位。
+
+```less
+// Less
+// 默认参数方法
+.border(@a:10px,@b:20px,@c:50px,@color:#2b4b6b) {
+	border: 1px solid @color;
+	// @arguments代表传入的所有参数
+	box-shadow: @arguments;
+}
+#warp2 {
+	.border();
+}
+
+// 生成的css
+#warp2 {
+  border: 1px solid #2b4b6b;
+  box-shadow: 10px 20px 50px #2b4b6b;
+}
+```
+

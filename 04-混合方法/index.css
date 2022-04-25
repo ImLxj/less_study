@@ -1,0 +1,9 @@
+#warp {
+  background-color: lightsalmon;
+  width: 500px;
+  height: 500px;
+}
+#warp2 {
+  border: 1px solid #2b4b6b;
+  box-shadow: 10px 20px 50px #2b4b6b;
+}

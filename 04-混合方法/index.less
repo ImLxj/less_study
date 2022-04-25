@@ -1,0 +1,19 @@
+// 无参数方法
+.card() {
+	background-color: lightsalmon;
+	width: 500px;
+	height: 500px;
+}
+#warp {
+	.card();
+}
+
+// 默认参数方法
+.border(@a:10px,@b:20px,@c:50px,@color:#2b4b6b) {
+	border: 1px solid @color;
+	// @arguments代表传入的所有参数
+	box-shadow: @arguments;
+}
+#warp2 {
+	.border();
+}
